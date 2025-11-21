@@ -16,7 +16,7 @@ class FirebaseBackend:
     def __init__(self):
         """Initialize Firebase app"""
         if not firebase_admin._apps:
-            firebase_key = os.getenv('FIREBASE_KEY')
+            firebase_key = os.getenv('FIREBASE_SERVICE_ACCOUNT_JSON')
             if firebase_key:
                 cred = credentials.Certificate(json.loads(firebase_key))
             elif config.FIREBASE_CREDENTIALS_PATH:
