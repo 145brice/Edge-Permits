@@ -26,7 +26,6 @@ def number_format(value):
     except (ValueError, TypeError):
         return value
 
-# Initialize services
 firebase = FirebaseBackend()
 stripe_payment = StripePayment()
 email_service = EmailService()
@@ -46,7 +45,8 @@ def login_required(f):
 
 @app.route('/')
 def index():
-    return "Contractor leads live. Pick your city."
+    user = session.get('user')
+    return render_template('index.html', user=user)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
