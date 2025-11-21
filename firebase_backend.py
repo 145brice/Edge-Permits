@@ -22,12 +22,11 @@ class FirebaseBackend:
                 cred_dict = json.loads(firebase_key)
                 cred = credentials.Certificate(cred_dict)
             # Fallback to individual environment variables
-            elif config.FIREBASE_TYPE and config.FIREBASE_PRIVATE_KEY:
                 cred_dict = {
                     "type": config.FIREBASE_TYPE,
                     "project_id": config.FIREBASE_PROJECT_ID,
                     "private_key_id": config.FIREBASE_PRIVATE_KEY_ID,
-                    "private_key": config.FIREBASE_PRIVATE_KEY.replace('\\n', '\n'),
+                    "private_key": config.FIREBASE_PRIVATE_KEY,
                     "client_email": config.FIREBASE_CLIENT_EMAIL,
                     "client_id": config.FIREBASE_CLIENT_ID,
                     "auth_uri": config.FIREBASE_AUTH_URI,
