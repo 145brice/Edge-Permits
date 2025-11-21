@@ -195,10 +195,8 @@ def buy_plan(plan):
     return "Plan not found", 404
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--port', type=int, default=8080)
-    args = parser.parse_args()
-    port = args.port
-    print(f"n🚀 Starting Contractor Leads on http://localhost:{port}n")
+def run():
+    port = int(os.getenv('PORT', 8080))    print(f"n🚀 Starting Contractor Leads on http://localhost:{port}n")
     app.run(host='0.0.0.0', port=port, debug=(config.FLASK_ENV == 'development'))
+if __name__ == '__main__':
+    run()
