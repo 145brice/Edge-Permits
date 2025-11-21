@@ -20,28 +20,25 @@ class FirebaseBackend:
             firebase_key = os.getenv('FIREBASE_KEY')
             if firebase_key:
                 cred_dict = json.loads(firebase_key)
-                cred = credentials.Certificate(cred_dict)
-            # Fallback to individual environment variables
-                cred_dict = {
-                    "type": config.FIREBASE_TYPE,
-                    "project_id": config.FIREBASE_PROJECT_ID,
-                    "private_key_id": config.FIREBASE_PRIVATE_KEY_ID,
-                    "private_key": config.FIREBASE_PRIVATE_KEY,
-                    "client_email": config.FIREBASE_CLIENT_EMAIL,
-                    "client_id": config.FIREBASE_CLIENT_ID,
-                    "auth_uri": config.FIREBASE_AUTH_URI,
-                    "token_uri": config.FIREBASE_TOKEN_URI,
-                    "auth_provider_x509_cert_url": config.FIREBASE_AUTH_PROVIDER_X509_CERT_URL,
-                    "client_x509_cert_url": config.FIREBASE_CLIENT_X509_CERT_URL,
-                    "universe_domain": config.FIREBASE_UNIVERSE_DOMAIN
-                }
-                cred = credentials.Certificate(cred_dict)
-            elif config.FIREBASE_CREDENTIALS_PATH:
-                cred = credentials.Certificate(config.FIREBASE_CREDENTIALS_PATH)
-            else:
-                raise ValueError("Firebase credentials not configured. Set FIREBASE_KEY environment variable or individual FIREBASE_* environment variables.")
-            
-            options = {}
+            cred = credentials.Certificate(cred_dict)
+    elif config.FIREBASE_CREDENTIALS_PATH:
+        cred = credentials.Certificate(config.FIREBASE_CREDENTIALS_PATH)
+    else:
+        # Fallback to individual environment variables
+        cred_dict = {
+            "type": config.FIREBASE_TYPE,
+            "project_id": config.FIREBASE_PROJECT_ID,
+            "private_key_id": config.FIREBASE_PRIVATE_KEY_ID,
+            "private_key": config.FIREBASE_PRIVATE_KEY,
+            "client_email": config.FIREBASE_CLIENT_EMAIL,
+            "client_id": config.FIREBASE_CLIENT_ID,
+            "auth_uri": config.FIREBASE_AUTH_URI,
+            "token_uri": config.FIREBASE_TOKEN_URI,
+            "auth_provider_x509_cert_url": config.FIREBASE_AUTH_PROVIDER_X509_CERT_URL,
+            "client_x509_cert_url": config.FIREBASE_CLIENT_X509_CERT_URL,
+            "universe_domain": config.FIREBASE_UNIVERSE_DOMAIN
+        }
+        cred = credentials.Certificate(cred_dict)            options = {}
             if config.FIREBASE_DATABASE_URL:
                 options['databaseURL'] = config.FIREBASE_DATABASE_URL
             firebase_admin.initialize_app(cred, options)
