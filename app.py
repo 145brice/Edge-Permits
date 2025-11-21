@@ -46,13 +46,7 @@ def login_required(f):
 
 @app.route('/')
 def index():
-    user = None
-    if 'user_id' in session:
-        user = {
-            'email': session.get('email', ''),
-            'id': session['user_id']
-        }
-    return render_template('index.html', user=user)
+    return "Contractor leads live. Pick your city."
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
