@@ -14,7 +14,27 @@ class FirebaseBackend:
     def __init__(self):
         """Initialize Firebase app"""
         if not firebase_admin._apps:
-            cred = credentials.Certificate(config.FIREBASE_CREDENTIALS_PATH)
+            # Try environment variables first (for Railway), then fallback to file
+            if config.FIREBASE_TYPE and config.FIREBASE_PRIVATE_KEY:
+                cred_dict = {
+                    "type": config.FIREBASE_TYPE,
+                    "project_id": config.FIREBASE_PROJECT_ID,
+                    "private_key_id": config.FIREBASE_PRIVATE_KEY_ID,
+                    "private_key": config.FIREBASE_PRIVATE_KEY.replace('\\n', '\n'),
+                    "client_email": config.FIREBASE_CLIENT_EMAIL,
+                    "client_id": config.FIREBASE_CLIENT_ID,
+                    "auth_uri": config.FIREBASE_AUTH_URI,
+                    "token_uri": config.FIREBASE_TOKEN_URI,
+                    "auth_provider_x509_cert_url": config.FIREBASE_AUTH_PROVIDER_X509_CERT_URL,
+                    "client_x509_cert_url": config.FIREBASE_CLIENT_X509_CERT_URL,
+                    "universe_domain": config.FIREBASE_UNIVERSE_DOMAIN
+                }
+                cred = credentials.Certificate(cred_dict)
+            elif config.FIREBASE_CREDENTIALS_PATH:
+                cred = credentials.Certificate(config.FIREBASE_CREDENTIALS_PATH)
+            else:
+                raise ValueError("Firebase credentials not configured. Set either FIREBASE_CREDENTIALS_PATH or individual FIREBASE_* environment variables.")
+            
             options = {}
             if config.FIREBASE_DATABASE_URL:
                 options['databaseURL'] = config.FIREBASE_DATABASE_URL
