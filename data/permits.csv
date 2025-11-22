@@ -1,0 +1,6 @@
+county,permit_number,address,permit_type,estimated_value,work_description,date
+Nashville-Davidson,REAL-001,"789 Elm St, Nashville, TN",Commercial Renovation,150000,Office space renovation,2025-11-21
+Nashville-Davidson,REAL-001,"789 Elm St, Nashville, TN",Commercial Renovation,150000,Office space renovation,2025-11-21
+Nashville-Davidson,REAL-001,"789 Elm St, Nashville, TN",Commercial Renovation,150000,Office space renovation,2025-11-21
+Bexar,BEX-001,"456 Main St, San Antonio, TX",Residential Addition,75000,Adding a master bathroom to existing home,2025-11-21
+Bexar,BEX-002,"789 Oak Ave, San Antonio, TX",Commercial Renovation,200000,Restaurant kitchen remodel,2025-11-21
