@@ -1,0 +1,3 @@
+county,permit_number,address,permit_type,estimated_value,work_description,date
+Hamilton,HAM-001,"321 Signal Mountain Rd, Chattanooga, TN",Residential New Construction,350000,New single-family home construction,2025-11-21
+Hamilton,HAM-002,"654 Market St, Chattanooga, TN",Commercial Addition,125000,Retail store expansion,2025-11-21

@@ -7,6 +7,7 @@ import re
 import random
 import hmac
 import hashlib
+import csv
 import database
 import auth
 
@@ -527,68 +528,32 @@ def dashboard():
     user = auth.get_current_user()
     subscriptions = database.get_user_subscriptions(user['id'])
     
-    subs_html = ""
-    if subscriptions:
-        for sub in subscriptions:
-            city_names = {
-                'nashville': 'Nashville',
-                'chattanooga': 'Chattanooga',
-                'travis': 'Austin',
-                'bexar': 'San Antonio'
-            }
-            city = city_names.get(sub['county_key'], sub['county_key'].title())
-            subs_html += f"""
-            <div class="sub-card">
-                <h3>{city}, {sub['state_key'].title()}</h3>
-                <p class="status">Status: <span class="active">{sub['status']}</span></p>
-                <p class="date">Started: {sub['started_at']}</p>
-                <a href="/county/{sub['state_key']}/{sub['county_key']}" class="btn-view">View Leads</a>
-            </div>
-            """
-    else:
-        subs_html = "<p style='text-align: center; color: #808080;'>No active subscriptions. <a href='/signup' style='color: #6366f1;'>Browse markets</a></p>"
+    # Get user's counties and map to CSV filenames
+    county_files = {
+        ('tennessee', 'nashville'): 'nashville-davidson.csv',
+        ('tennessee', 'hamilton'): 'hamilton.csv',
+        ('texas', 'bexar'): 'bexar.csv',
+        ('texas', 'travis'): 'austin-travis.csv'
+    }
     
-    return f"""<!DOCTYPE html><html><head><title>Dashboard</title>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-        body {{ font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; min-height: 100vh; padding: 40px 20px; }}
-        .container {{ max-width: 1200px; margin: 0 auto; }}
-        .header {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }}
-        h1 {{ font-size: 2.5rem; font-weight: 800; }}
-        .user-info {{ text-align: right; }}
-        .email {{ color: #808080; margin-bottom: 10px; }}
-        .logout-btn {{ color: #6366f1; text-decoration: none; font-weight: 600; }}
-        .section {{ background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 40px; margin-bottom: 30px; }}
-        .section-title {{ font-size: 1.5rem; font-weight: 700; margin-bottom: 25px; }}
-        .subs-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }}
-        .sub-card {{ background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 25px; }}
-        .sub-card h3 {{ font-size: 1.25rem; margin-bottom: 15px; }}
-        .status {{ color: #808080; margin-bottom: 10px; }}
-        .active {{ color: #22c55e; font-weight: 600; }}
-        .date {{ color: #808080; font-size: 0.875rem; margin-bottom: 20px; }}
-        .btn-view {{ display: inline-block; padding: 10px 20px; background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; }}
-        .btn-view:hover {{ opacity: 0.9; }}
-        .btn-browse {{ display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); color: white; text-decoration: none; border-radius: 12px; font-weight: 700; margin-top: 20px; }}
-    </style></head><body>
-    <div class="container">
-        <div class="header">
-            <h1>📊 Dashboard</h1>
-            <div class="user-info">
-                <div class="email">{user['email']}</div>
-                <a href="/logout" class="logout-btn">Logout</a>
-            </div>
-        </div>
-        <div class="section">
-            <div class="section-title">Your Subscriptions</div>
-            <div class="subs-grid">
-                {subs_html}
-            </div>
-            <a href="/signup" class="btn-browse">Browse More Markets</a>
-        </div>
-    </div>
-    </body></html>"""
+    permits = []
+    for sub in subscriptions:
+        state_key = sub['state_key']
+        county_key = sub['county_key']
+        csv_filename = county_files.get((state_key, county_key))
+        
+        if csv_filename:
+            csv_path = f"data/{csv_filename}"
+            if os.path.exists(csv_path):
+                with open(csv_path, 'r') as f:
+                    reader = csv.DictReader(f)
+                    permits.extend(reader)
+    
+    # Sort logic
+    sort = request.args.get('sort', 'date')
+    permits.sort(key=lambda x: x.get(sort, ''), reverse=(sort == 'date'))
+    
+    return render_template('dashboard.html', permits=permits, counties=[f"{sub['state_key']}_{sub['county_key']}" for sub in subscriptions])
 
 if __name__ == '__main__':
     total_leads = sum(len(county_leads) for state_leads in LEADS.values() for county_leads in state_leads.values())

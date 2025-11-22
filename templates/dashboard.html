@@ -224,6 +224,7 @@
     <div class="container">
         <div class="navbar">
             <h1>🏗️ Contractor Leads Dashboard</h1>
+            <a href="/archives">Archives</a>
             <a href="/logout">Logout</a>
         </div>
         
@@ -236,21 +237,33 @@
             <a href="/download_pdf/{{ date }}" class="download-btn">📄 Download Today's Leads (PDF)</a>
         </div>
         
-        {% if leads %}
-        <div style="text-align: center; margin: 20px 0;"><button style="font-size: 24px; font-weight: bold; text-decoration: underline; text-decoration-color: red; color: red; background: none; border: none; cursor: pointer;">Sort by: Newest ↓</button></div>        <div style="text-align: center; margin: 20px 0;"><button style="font-size: 24px; font-weight: bold; text-decoration: underline; text-decoration-color: red; color: red; background: none; border: none; cursor: pointer;">Sort by: Newest ↓</button></div>        <div class="leads-grid">
-            {% for lead in leads %}
-            <div class="lead-card">
-                <h3>{{ lead.address }}</h3>
-                <p><strong>Type:</strong> {{ lead.permit_type }}</p>
-                <p><strong>Value:</strong> ${{ lead.estimated_value|number_format }}</p>
-                <p><strong>Score:</strong> <span class="score">{{ lead.score }}/100</span></p>
-            </div>
-            {% endfor %}
+        {% if permits %}
+        <div class="permits-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th><a href="?sort=address">Address</a></th>
+                        <th><a href="?sort=permit_type">Project</a></th>
+                        <th><a href="?sort=estimated_value">Price</a></th>
+                        <th><a href="?sort=date">Pulled</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in permits %}
+                    <tr>
+                        <td>{{ p.address }}</td>
+                        <td>{{ p.permit_type }}</td>
+                        <td>${{ "{:,.0f}".format(p.estimated_value|int) }}</td>
+                        <td>{{ p.date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
         {% else %}
         <div class="no-leads">
-            <h3>No leads available for today</h3>
-            <p>Check back tomorrow at 5:31 AM for fresh permits!</p>
+            <h3>No permits available</h3>
+            <p>No active subscriptions or no data available for your counties.</p>
         </div>
         {% endif %}
     </div>
@@ -341,6 +354,48 @@
             background: white;
             border-radius: 10px;
             color: #666;
+        }
+        
+        .permits-table {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .permits-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .permits-table th {
+            background: #1a5490;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .permits-table th a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .permits-table th a:hover {
+            text-decoration: underline;
+        }
+        
+        .permits-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .permits-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .permits-table tr:hover {
+            background: #e3f2fd;
         }
     </style>
 </head>

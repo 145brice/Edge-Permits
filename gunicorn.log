@@ -1,0 +1,9 @@
+[2025-11-20 18:20:57 -0600] [46507] [INFO] Starting gunicorn 21.2.0
+[2025-11-20 18:20:57 -0600] [46507] [INFO] Listening at: http://127.0.0.1:5008 (46507)
+[2025-11-20 18:20:57 -0600] [46507] [INFO] Using worker: sync
+[2025-11-20 18:20:57 -0600] [46562] [INFO] Booting worker with pid: 46562
+/Users/briceleasure/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+[2025-11-20 18:22:10 -0600] [46507] [INFO] Handling signal: term
+[2025-11-20 18:22:16 -0600] [46562] [INFO] Worker exiting (pid: 46562)
+[2025-11-20 18:22:18 -0600] [46507] [INFO] Shutting down: Master

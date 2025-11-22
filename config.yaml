@@ -1,0 +1,55 @@
+counties:
+  bexar:
+    base_url: "https://aca-prod.accela.com/BEXAR/"
+    selectors:
+      search_link: "Search Permits"
+      from_date: "#fromDate"
+      to_date: "#toDate"
+      submit: "#submitButton"
+      results_table: "table"
+    date_format: "%m/%d/%Y"
+    date_pattern: null
+
+  hamilton:
+    base_url: "https://aca-prod.accela.com/HAMTN/"
+    selectors:
+      search_link: "Search Permits"
+      from_date: "#fromDate"
+      to_date: "#toDate"
+      submit: "#submitButton"
+      results_table: "table"
+    date_format: "%m/%d/%Y"
+    date_pattern: null
+
+  davidson:
+    base_url: "https://epermits.nashville.gov/"
+    selectors:
+      advanced_search_link: "Advanced Search"
+      issued_date_from: "#issuedDateFrom"
+      issued_date_to: "#issuedDateTo"
+      status_issued: "#statusIssue"
+      search_button: "Search"
+      results_table: "table"
+    date_format: "%m/%d/%Y"
+    date_pattern: null
+
+  travis:
+    fallback_url: "https://aca-prod.accela.com/AUSTIN/"
+    selectors:
+      search_link: "Search Permits"
+      from_date: "#fromDate"
+      to_date: "#toDate"
+      submit: "#submitButton"
+      results_table: "table"
+    date_format: "%m/%d/%Y"
+    date_pattern: null
+
+global:
+  user_agents:
+    - "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    - "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    - "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+  delays:
+    between_actions: [3, 6]
+    between_counties: [10, 20]
+  csv_headers: ["permit_number", "issue_date", "address", "work_type", "contractor", "valuation"]

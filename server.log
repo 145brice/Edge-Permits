@@ -1,0 +1,25 @@
+/Users/briceleasure/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+======================================================================
+🏗️  MULTI-REGION CONTRACTOR LEADS SCRAPER
+======================================================================
+🌐 Open in browser: http://localhost:5002
+======================================================================
+
+📍 Coverage:
+   TENNESSEE: Nashville, Memphis, Chattanooga, Knoxville
+   TEXAS: Dallas, Houston, San Antonio, Austin
+
+🎯 Features:
+   • 10 major metro areas
+   • 27 counties total
+   • Real-time API scraping (where available)
+   • AI-powered lead scoring
+   • Multi-region PDF reports
+======================================================================
+
+ * Serving Flask app 'multi_region_scraper'
+ * Debug mode: on
+Address already in use
+Port 5002 is in use by another program. Either identify and stop that program, or start the server with a different port.

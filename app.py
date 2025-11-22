@@ -8,6 +8,9 @@ from functools import wraps
 from datetime import datetime
 import os
 
+import csv
+from pathlib import Path
+
 from firebase_backend import FirebaseBackend
 from stripe_payment import StripePayment
 from email_service import EmailService
@@ -112,6 +115,82 @@ def dashboard():
                           user=user,
                           leads=leads,
                           date=date_str)
+
+
+@app.route('/archives')
+# @login_required
+def archives():
+    """Archives page - shows historical CSV files"""
+    user_id = session.get('user_id')
+    user = firebase.get_user(user_id)
+    
+    # Get user's subscriptions
+    subscriptions = firebase.get_user_subscriptions(user_id) if user_id else []
+    subscribed_counties = [sub.get('county', '') for sub in subscriptions]
+    
+    # Map county names to slugs
+    county_map = {
+        'Nashville-Davidson': 'davidson',
+        'Bexar': 'bexar',
+        'Hamilton': 'hamilton',
+        'Travis': 'travis'
+    }
+    subscribed_slugs = [county_map.get(county, county.lower().replace(' ', '_')) for county in subscribed_counties]
+    
+    # Find CSV files for subscribed counties
+    csv_files = {}
+    data_dir = Path('data')
+    if data_dir.exists():
+        for slug in subscribed_slugs:
+            pattern = f"{slug}_permits_*.csv"
+            files = list(data_dir.glob(pattern))
+            if files:
+                # Sort by date descending
+                files.sort(key=lambda x: x.stat().st_mtime, reverse=True)
+                csv_files[slug] = [(f.name, f.stat().st_mtime) for f in files]
+    
+    return render_template('archives.html', csv_files=csv_files, county_map=county_map)
+
+
+@app.route('/view_csv/<filename>')
+# @login_required
+def view_csv(filename):
+    """View CSV file as sortable table"""
+    user_id = session.get('user_id')
+    user = firebase.get_user(user_id)
+    
+    # Get user's subscriptions
+    subscriptions = firebase.get_user_subscriptions(user_id) if user_id else []
+    subscribed_counties = [sub.get('county', '') for sub in subscriptions]
+    
+    # Map to slugs
+    county_map = {
+        'Nashville-Davidson': 'davidson',
+        'Bexar': 'bexar',
+        'Hamilton': 'hamilton',
+        'Travis': 'travis'
+    }
+    subscribed_slugs = [county_map.get(county, county.lower().replace(' ', '_')) for county in subscribed_counties]
+    
+    # Check if file belongs to subscribed county
+    file_path = Path('data') / filename
+    if not file_path.exists():
+        return "File not found", 404
+    
+    slug = filename.split('_')[0]
+    if slug not in subscribed_slugs:
+        return "Access denied", 403
+    
+    # Read CSV
+    permits = []
+    try:
+        with open(file_path, 'r', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            permits = list(reader)
+    except Exception as e:
+        return f"Error reading file: {e}", 500
+    
+    return render_template('view_csv.html', permits=permits, filename=filename)
 
 
 @app.route('/download_pdf/<date>')

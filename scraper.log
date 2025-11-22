@@ -1,0 +1,288 @@
+2025-11-21 21:08:37,344 - INFO - Starting full scrape cycle
+2025-11-21 21:08:37,344 - INFO - ====== WebDriver manager ======
+2025-11-21 21:08:38,288 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:08:38,374 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:08:38,441 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:08:38,657 - INFO - WebDriver version 142.0.7444.175 selected
+2025-11-21 21:08:38,664 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/142.0.7444.175/mac-x64/chromedriver-mac-x64.zip
+2025-11-21 21:08:38,665 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/142.0.7444.175/mac-x64/chromedriver-mac-x64.zip
+2025-11-21 21:08:38,778 - INFO - Driver downloading response is 200
+2025-11-21 21:08:39,032 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:08:39,250 - INFO - Driver has been saved in cache [/Users/briceleasure/.wdm/drivers/chromedriver/mac64/142.0.7444.175]
+2025-11-21 21:08:44,791 - INFO - Starting Bexar County scrape
+2025-11-21 21:08:55,335 - ERROR - Error scraping Bexar County: Message: 
+Stacktrace:
+0   chromedriver                        0x00000001058d1698 chromedriver + 6153880
+1   chromedriver                        0x00000001058c8b6a chromedriver + 6118250
+2   chromedriver                        0x000000010535da5b chromedriver + 436827
+3   chromedriver                        0x00000001053b0538 chromedriver + 775480
+4   chromedriver                        0x00000001053b0791 chromedriver + 776081
+5   chromedriver                        0x0000000105401934 chromedriver + 1108276
+6   chromedriver                        0x00000001053fec8e chromedriver + 1096846
+7   chromedriver                        0x00000001053a2b6f chromedriver + 719727
+8   chromedriver                        0x00000001053a3871 chromedriver + 723057
+9   chromedriver                        0x000000010588e011 chromedriver + 5877777
+10  chromedriver                        0x00000001058924c2 chromedriver + 5895362
+11  chromedriver                        0x000000010586a155 chromedriver + 5730645
+12  chromedriver                        0x0000000105892f6f chromedriver + 5898095
+13  chromedriver                        0x0000000105859dc4 chromedriver + 5664196
+14  chromedriver                        0x00000001058b5b48 chromedriver + 6040392
+15  chromedriver                        0x00000001058b5d0d chromedriver + 6040845
+16  chromedriver                        0x00000001058c8751 chromedriver + 6117201
+17  libsystem_pthread.dylib             0x00007ff807652259 _pthread_start + 125
+18  libsystem_pthread.dylib             0x00007ff80764dc7b thread_start + 15
+
+2025-11-21 21:09:06,020 - INFO - ====== WebDriver manager ======
+2025-11-21 21:09:06,307 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:09:06,373 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:09:06,439 - INFO - Driver [/Users/briceleasure/.wdm/drivers/chromedriver/mac64/142.0.7444.175/chromedriver-mac-x64/chromedriver] found in cache
+2025-11-21 21:09:11,162 - INFO - Starting Hamilton County scrape
+2025-11-21 21:09:21,612 - ERROR - Error scraping Hamilton County: Message: 
+Stacktrace:
+0   chromedriver                        0x000000010b036698 chromedriver + 6153880
+1   chromedriver                        0x000000010b02db6a chromedriver + 6118250
+2   chromedriver                        0x000000010aac2a5b chromedriver + 436827
+3   chromedriver                        0x000000010ab15538 chromedriver + 775480
+4   chromedriver                        0x000000010ab15791 chromedriver + 776081
+5   chromedriver                        0x000000010ab66934 chromedriver + 1108276
+6   chromedriver                        0x000000010ab63c8e chromedriver + 1096846
+7   chromedriver                        0x000000010ab07b6f chromedriver + 719727
+8   chromedriver                        0x000000010ab08871 chromedriver + 723057
+9   chromedriver                        0x000000010aff3011 chromedriver + 5877777
+10  chromedriver                        0x000000010aff74c2 chromedriver + 5895362
+11  chromedriver                        0x000000010afcf155 chromedriver + 5730645
+12  chromedriver                        0x000000010aff7f6f chromedriver + 5898095
+13  chromedriver                        0x000000010afbedc4 chromedriver + 5664196
+14  chromedriver                        0x000000010b01ab48 chromedriver + 6040392
+15  chromedriver                        0x000000010b01ad0d chromedriver + 6040845
+16  chromedriver                        0x000000010b02d751 chromedriver + 6117201
+17  libsystem_pthread.dylib             0x00007ff807652259 _pthread_start + 125
+18  libsystem_pthread.dylib             0x00007ff80764dc7b thread_start + 15
+
+2025-11-21 21:09:37,693 - INFO - ====== WebDriver manager ======
+2025-11-21 21:09:37,925 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:09:37,995 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:09:38,054 - INFO - Driver [/Users/briceleasure/.wdm/drivers/chromedriver/mac64/142.0.7444.175/chromedriver-mac-x64/chromedriver] found in cache
+2025-11-21 21:09:41,078 - INFO - Starting Davidson County scrape
+2025-11-21 21:09:41,853 - ERROR - Error scraping Davidson County: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=142.0.7444.176)
+Stacktrace:
+0   chromedriver                        0x000000010c0e0698 chromedriver + 6153880
+1   chromedriver                        0x000000010c0d7b6a chromedriver + 6118250
+2   chromedriver                        0x000000010bb6ca5b chromedriver + 436827
+3   chromedriver                        0x000000010bb637a6 chromedriver + 399270
+4   chromedriver                        0x000000010bb548d8 chromedriver + 338136
+5   chromedriver                        0x000000010bb566fb chromedriver + 345851
+6   chromedriver                        0x000000010bb54e13 chromedriver + 339475
+7   chromedriver                        0x000000010bb54669 chromedriver + 337513
+8   chromedriver                        0x000000010bb54369 chromedriver + 336745
+9   chromedriver                        0x000000010bb521c1 chromedriver + 328129
+10  chromedriver                        0x000000010bb529aa chromedriver + 330154
+11  chromedriver                        0x000000010bb70269 chromedriver + 451177
+12  chromedriver                        0x000000010bc0e885 chromedriver + 1099909
+13  chromedriver                        0x000000010bc0dc8e chromedriver + 1096846
+14  chromedriver                        0x000000010bbb1b6f chromedriver + 719727
+15  chromedriver                        0x000000010bbb2871 chromedriver + 723057
+16  chromedriver                        0x000000010c09d011 chromedriver + 5877777
+17  chromedriver                        0x000000010c0a14c2 chromedriver + 5895362
+18  chromedriver                        0x000000010c079155 chromedriver + 5730645
+19  chromedriver                        0x000000010c0a1f6f chromedriver + 5898095
+20  chromedriver                        0x000000010c068dc4 chromedriver + 5664196
+21  chromedriver                        0x000000010c0c4b48 chromedriver + 6040392
+22  chromedriver                        0x000000010c0c4d0d chromedriver + 6040845
+23  chromedriver                        0x000000010c0d7751 chromedriver + 6117201
+24  libsystem_pthread.dylib             0x00007ff807652259 _pthread_start + 125
+25  libsystem_pthread.dylib             0x00007ff80764dc7b thread_start + 15
+
+2025-11-21 21:09:52,298 - INFO - ====== WebDriver manager ======
+2025-11-21 21:09:52,636 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:09:52,708 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:09:52,769 - INFO - Driver [/Users/briceleasure/.wdm/drivers/chromedriver/mac64/142.0.7444.175/chromedriver-mac-x64/chromedriver] found in cache
+2025-11-21 21:09:56,495 - INFO - Starting Travis County scrape
+2025-11-21 21:10:07,118 - ERROR - Error scraping Travis County: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000103f7e698 chromedriver + 6153880
+1   chromedriver                        0x0000000103f75b6a chromedriver + 6118250
+2   chromedriver                        0x0000000103a0aa5b chromedriver + 436827
+3   chromedriver                        0x0000000103a5d538 chromedriver + 775480
+4   chromedriver                        0x0000000103a5d791 chromedriver + 776081
+5   chromedriver                        0x0000000103aae934 chromedriver + 1108276
+6   chromedriver                        0x0000000103aabc8e chromedriver + 1096846
+7   chromedriver                        0x0000000103a4fb6f chromedriver + 719727
+8   chromedriver                        0x0000000103a50871 chromedriver + 723057
+9   chromedriver                        0x0000000103f3b011 chromedriver + 5877777
+10  chromedriver                        0x0000000103f3f4c2 chromedriver + 5895362
+11  chromedriver                        0x0000000103f17155 chromedriver + 5730645
+12  chromedriver                        0x0000000103f3ff6f chromedriver + 5898095
+13  chromedriver                        0x0000000103f06dc4 chromedriver + 5664196
+14  chromedriver                        0x0000000103f62b48 chromedriver + 6040392
+15  chromedriver                        0x0000000103f62d0d chromedriver + 6040845
+16  chromedriver                        0x0000000103f75751 chromedriver + 6117201
+17  libsystem_pthread.dylib             0x00007ff807652259 _pthread_start + 125
+18  libsystem_pthread.dylib             0x00007ff80764dc7b thread_start + 15
+
+2025-11-21 21:10:07,212 - INFO - Completed full scrape cycle
+2025-11-21 21:13:17,059 - INFO - ====== WebDriver manager ======
+2025-11-21 21:13:17,274 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:13:17,346 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:13:17,415 - INFO - Driver [/Users/briceleasure/.wdm/drivers/chromedriver/mac64/142.0.7444.175/chromedriver-mac-x64/chromedriver] found in cache
+2025-11-21 21:13:20,382 - INFO - Starting Davidson County scrape
+2025-11-21 21:13:30,733 - ERROR - Error scraping Davidson County: Message: 
+Stacktrace:
+0   chromedriver                        0x000000010d0bd698 chromedriver + 6153880
+1   chromedriver                        0x000000010d0b4b6a chromedriver + 6118250
+2   chromedriver                        0x000000010cb49a5b chromedriver + 436827
+3   chromedriver                        0x000000010cb9c538 chromedriver + 775480
+4   chromedriver                        0x000000010cb9c791 chromedriver + 776081
+5   chromedriver                        0x000000010cbed934 chromedriver + 1108276
+6   chromedriver                        0x000000010cbeac8e chromedriver + 1096846
+7   chromedriver                        0x000000010cb8eb6f chromedriver + 719727
+8   chromedriver                        0x000000010cb8f871 chromedriver + 723057
+9   chromedriver                        0x000000010d07a011 chromedriver + 5877777
+10  chromedriver                        0x000000010d07e4c2 chromedriver + 5895362
+11  chromedriver                        0x000000010d056155 chromedriver + 5730645
+12  chromedriver                        0x000000010d07ef6f chromedriver + 5898095
+13  chromedriver                        0x000000010d045dc4 chromedriver + 5664196
+14  chromedriver                        0x000000010d0a1b48 chromedriver + 6040392
+15  chromedriver                        0x000000010d0a1d0d chromedriver + 6040845
+16  chromedriver                        0x000000010d0b4751 chromedriver + 6117201
+17  libsystem_pthread.dylib             0x00007ff807652259 _pthread_start + 125
+18  libsystem_pthread.dylib             0x00007ff80764dc7b thread_start + 15
+
+2025-11-21 21:24:46,057 - INFO - ====== WebDriver manager ======
+2025-11-21 21:24:46,593 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:24:46,673 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:24:46,743 - INFO - Driver [/Users/briceleasure/.wdm/drivers/chromedriver/mac64/142.0.7444.175/chromedriver-mac-x64/chromedriver] found in cache
+2025-11-21 21:24:52,484 - INFO - Starting Davidson County scrape
+2025-11-21 21:54:00,462 - INFO - ====== WebDriver manager ======
+2025-11-21 21:54:01,179 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:54:01,257 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:54:01,317 - INFO - Driver [/Users/briceleasure/.wdm/drivers/chromedriver/mac64/142.0.7444.175/chromedriver-mac-x64/chromedriver] found in cache
+2025-11-21 21:54:06,939 - INFO - Starting Davidson County scrape
+2025-11-21 21:54:17,726 - ERROR - Error scraping Davidson County: Message: element click intercepted: Element <button type="submit" class="btn btn-default btn-primary btn-lg pull-right" ng-click="ok()" locale-text="searchButton">...</button> is not clickable at point (1195, 763). Other element would receive the click: <button tabindex="-1" type="button" class="btn btn-default" style="width: 100%" ng-class="{'btn-primary': el.selected, 'btn-info btn-today': el.isToday &amp;&amp; !el.selected}" ng-click="$select(el.date, el.disabled)" ng-disabled="el.disabled">...</button>
+  (Session info: chrome=142.0.7444.176); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#elementclickinterceptedexception
+Stacktrace:
+0   chromedriver                        0x0000000108f19698 chromedriver + 6153880
+1   chromedriver                        0x0000000108f10b6a chromedriver + 6118250
+2   chromedriver                        0x00000001089a5a5b chromedriver + 436827
+3   chromedriver                        0x00000001089ff480 chromedriver + 803968
+4   chromedriver                        0x00000001089fd2cb chromedriver + 795339
+5   chromedriver                        0x00000001089fa952 chromedriver + 784722
+6   chromedriver                        0x00000001089f9a68 chromedriver + 780904
+7   chromedriver                        0x00000001089eca6a chromedriver + 727658
+8   chromedriver                        0x00000001089ec3e8 chromedriver + 725992
+9   chromedriver                        0x0000000108a46c8e chromedriver + 1096846
+10  chromedriver                        0x00000001089eab6f chromedriver + 719727
+11  chromedriver                        0x00000001089eb871 chromedriver + 723057
+12  chromedriver                        0x0000000108ed6011 chromedriver + 5877777
+13  chromedriver                        0x0000000108eda4c2 chromedriver + 5895362
+14  chromedriver                        0x0000000108eb2155 chromedriver + 5730645
+15  chromedriver                        0x0000000108edaf6f chromedriver + 5898095
+16  chromedriver                        0x0000000108ea1dc4 chromedriver + 5664196
+17  chromedriver                        0x0000000108efdb48 chromedriver + 6040392
+18  chromedriver                        0x0000000108efdd0d chromedriver + 6040845
+19  chromedriver                        0x0000000108f10751 chromedriver + 6117201
+20  libsystem_pthread.dylib             0x00007ff807652259 _pthread_start + 125
+21  libsystem_pthread.dylib             0x00007ff80764dc7b thread_start + 15
+
+2025-11-21 21:56:26,137 - INFO - ====== WebDriver manager ======
+2025-11-21 21:56:26,406 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:56:26,483 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:56:26,548 - INFO - Driver [/Users/briceleasure/.wdm/drivers/chromedriver/mac64/142.0.7444.175/chromedriver-mac-x64/chromedriver] found in cache
+2025-11-21 21:56:30,058 - INFO - Starting Davidson County scrape
+2025-11-21 21:56:44,805 - INFO - Scraped 0 permits from Davidson County
+2025-11-21 21:57:00,711 - INFO - ====== WebDriver manager ======
+2025-11-21 21:57:00,986 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:57:01,064 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:57:01,135 - INFO - Driver [/Users/briceleasure/.wdm/drivers/chromedriver/mac64/142.0.7444.175/chromedriver-mac-x64/chromedriver] found in cache
+2025-11-21 21:57:04,587 - INFO - Starting Davidson County scrape
+2025-11-21 21:57:22,938 - INFO - Scraped 0 permits from Davidson County
+2025-11-21 21:57:45,200 - INFO - Starting full scrape cycle
+2025-11-21 21:57:45,201 - INFO - ====== WebDriver manager ======
+2025-11-21 21:57:45,465 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:57:45,546 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:57:45,616 - INFO - Driver [/Users/briceleasure/.wdm/drivers/chromedriver/mac64/142.0.7444.175/chromedriver-mac-x64/chromedriver] found in cache
+2025-11-21 21:57:49,269 - INFO - Starting Bexar County scrape
+2025-11-21 21:57:59,691 - ERROR - Error scraping Bexar County: Message: 
+Stacktrace:
+0   chromedriver                        0x000000010b4aa698 chromedriver + 6153880
+1   chromedriver                        0x000000010b4a1b6a chromedriver + 6118250
+2   chromedriver                        0x000000010af36a5b chromedriver + 436827
+3   chromedriver                        0x000000010af89538 chromedriver + 775480
+4   chromedriver                        0x000000010af89791 chromedriver + 776081
+5   chromedriver                        0x000000010afda934 chromedriver + 1108276
+6   chromedriver                        0x000000010afd7c8e chromedriver + 1096846
+7   chromedriver                        0x000000010af7bb6f chromedriver + 719727
+8   chromedriver                        0x000000010af7c871 chromedriver + 723057
+9   chromedriver                        0x000000010b467011 chromedriver + 5877777
+10  chromedriver                        0x000000010b46b4c2 chromedriver + 5895362
+11  chromedriver                        0x000000010b443155 chromedriver + 5730645
+12  chromedriver                        0x000000010b46bf6f chromedriver + 5898095
+13  chromedriver                        0x000000010b432dc4 chromedriver + 5664196
+14  chromedriver                        0x000000010b48eb48 chromedriver + 6040392
+15  chromedriver                        0x000000010b48ed0d chromedriver + 6040845
+16  chromedriver                        0x000000010b4a1751 chromedriver + 6117201
+17  libsystem_pthread.dylib             0x00007ff807652259 _pthread_start + 125
+18  libsystem_pthread.dylib             0x00007ff80764dc7b thread_start + 15
+
+2025-11-21 21:58:10,354 - INFO - ====== WebDriver manager ======
+2025-11-21 21:58:10,622 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:58:10,686 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:58:10,749 - INFO - Driver [/Users/briceleasure/.wdm/drivers/chromedriver/mac64/142.0.7444.175/chromedriver-mac-x64/chromedriver] found in cache
+2025-11-21 21:58:14,055 - INFO - Starting Hamilton County scrape
+2025-11-21 21:58:24,517 - ERROR - Error scraping Hamilton County: Message: 
+Stacktrace:
+0   chromedriver                        0x0000000103ace698 chromedriver + 6153880
+1   chromedriver                        0x0000000103ac5b6a chromedriver + 6118250
+2   chromedriver                        0x000000010355aa5b chromedriver + 436827
+3   chromedriver                        0x00000001035ad538 chromedriver + 775480
+4   chromedriver                        0x00000001035ad791 chromedriver + 776081
+5   chromedriver                        0x00000001035fe934 chromedriver + 1108276
+6   chromedriver                        0x00000001035fbc8e chromedriver + 1096846
+7   chromedriver                        0x000000010359fb6f chromedriver + 719727
+8   chromedriver                        0x00000001035a0871 chromedriver + 723057
+9   chromedriver                        0x0000000103a8b011 chromedriver + 5877777
+10  chromedriver                        0x0000000103a8f4c2 chromedriver + 5895362
+11  chromedriver                        0x0000000103a67155 chromedriver + 5730645
+12  chromedriver                        0x0000000103a8ff6f chromedriver + 5898095
+13  chromedriver                        0x0000000103a56dc4 chromedriver + 5664196
+14  chromedriver                        0x0000000103ab2b48 chromedriver + 6040392
+15  chromedriver                        0x0000000103ab2d0d chromedriver + 6040845
+16  chromedriver                        0x0000000103ac5751 chromedriver + 6117201
+17  libsystem_pthread.dylib             0x00007ff807652259 _pthread_start + 125
+18  libsystem_pthread.dylib             0x00007ff80764dc7b thread_start + 15
+
+2025-11-21 21:58:35,449 - INFO - ====== WebDriver manager ======
+2025-11-21 21:58:35,688 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:58:35,778 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:58:35,845 - INFO - Driver [/Users/briceleasure/.wdm/drivers/chromedriver/mac64/142.0.7444.175/chromedriver-mac-x64/chromedriver] found in cache
+2025-11-21 21:58:39,114 - INFO - Starting Davidson County scrape
+2025-11-21 21:58:56,730 - INFO - Scraped 0 permits from Davidson County
+2025-11-21 21:59:07,175 - INFO - ====== WebDriver manager ======
+2025-11-21 21:59:07,446 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:59:07,519 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-21 21:59:07,583 - INFO - Driver [/Users/briceleasure/.wdm/drivers/chromedriver/mac64/142.0.7444.175/chromedriver-mac-x64/chromedriver] found in cache
+2025-11-21 21:59:10,829 - INFO - Starting Travis County scrape
+2025-11-21 21:59:21,313 - ERROR - Error scraping Travis County: Message: 
+Stacktrace:
+0   chromedriver                        0x00000001029c3698 chromedriver + 6153880
+1   chromedriver                        0x00000001029bab6a chromedriver + 6118250
+2   chromedriver                        0x000000010244fa5b chromedriver + 436827
+3   chromedriver                        0x00000001024a2538 chromedriver + 775480
+4   chromedriver                        0x00000001024a2791 chromedriver + 776081
+5   chromedriver                        0x00000001024f3934 chromedriver + 1108276
+6   chromedriver                        0x00000001024f0c8e chromedriver + 1096846
+7   chromedriver                        0x0000000102494b6f chromedriver + 719727
+8   chromedriver                        0x0000000102495871 chromedriver + 723057
+9   chromedriver                        0x0000000102980011 chromedriver + 5877777
+10  chromedriver                        0x00000001029844c2 chromedriver + 5895362
+11  chromedriver                        0x000000010295c155 chromedriver + 5730645
+12  chromedriver                        0x0000000102984f6f chromedriver + 5898095
+13  chromedriver                        0x000000010294bdc4 chromedriver + 5664196
+14  chromedriver                        0x00000001029a7b48 chromedriver + 6040392
+15  chromedriver                        0x00000001029a7d0d chromedriver + 6040845
+16  chromedriver                        0x00000001029ba751 chromedriver + 6117201
+17  libsystem_pthread.dylib             0x00007ff807652259 _pthread_start + 125
+18  libsystem_pthread.dylib             0x00007ff80764dc7b thread_start + 15
+
+2025-11-21 21:59:21,468 - INFO - Completed full scrape cycle

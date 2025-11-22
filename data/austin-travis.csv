@@ -1,0 +1,3 @@
+county,permit_number,address,permit_type,estimated_value,work_description,date
+Austin-Travis,ATX-001,"987 Congress Ave, Austin, TX",Commercial Renovation,500000,Downtown office building renovation,2025-11-21
+Austin-Travis,ATX-002,"147 Rainey St, Austin, TX",Multi-Family Construction,800000,New apartment complex construction,2025-11-21
