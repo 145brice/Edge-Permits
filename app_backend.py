@@ -561,5 +561,5 @@ if __name__ == '__main__':
     print(f"📊 {total_leads:,} leads loaded")
     print(f"🔐 Authentication enabled")
     print(f"💾 Database ready")
-    print(f"🌐 http://localhost:8080\n")
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    print(f"🌐 http://localhost:8081\n")
+    app.run(host='0.0.0.0', port=8081, debug=True)
