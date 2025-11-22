@@ -15,28 +15,28 @@ Your Stripe payment links **must include metadata** for the webhook to automatic
 For each of your 4 payment links, add this metadata:
 
 #### Nashville Payment Link
-**URL**: https://buy.stripe.com/6oUaEZ4zegSTeuubHh63K0f
+**URL**: https://buy.stripe.com/4gM14pc1G7ij5XYfXx63K0j
 
 Add metadata:
 - Key: `state_key` → Value: `tennessee`
 - Key: `county_key` → Value: `nashville`
 
 #### Chattanooga Payment Link
-**URL**: https://buy.stripe.com/14AfZj0iYeKLbiifXx63K0g
+**URL**: https://buy.stripe.com/8x29AVaXCeKL86612D63K0k
 
 Add metadata:
 - Key: `state_key` → Value: `tennessee`
 - Key: `county_key` → Value: `chattanooga`
 
 #### Austin Payment Link
-**URL**: https://buy.stripe.com/5kQ14pfdSeKLgCC26H63K0h
+**URL**: https://buy.stripe.com/5kQ4gB1n2dGH4TU26H63K0m
 
 Add metadata:
 - Key: `state_key` → Value: `texas`
 - Key: `county_key` → Value: `travis`
 
 #### San Antonio Payment Link
-**URL**: https://buy.stripe.com/8x25kF8PufOP9aa7r163K0i
+**URL**: https://buy.stripe.com/8x26oJd5K1XZ9aah1B63K0l
 
 Add metadata:
 - Key: `state_key` → Value: `texas`
