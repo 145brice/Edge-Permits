@@ -256,10 +256,10 @@ def buy_plan(plan):
     
     # Map plan names to Stripe payment links
     payment_links = {
-        'Bexar': 'https://buy.stripe.com/4gM5kF0iY0TVgCC12D63K0n',
-        'Davidson': 'https://buy.stripe.com/3cI00laXCauv722h1B63K0q',
-        'Hamilton': 'https://buy.stripe.com/dRmeVf0iYgST2LM9z963K0p',
-        'Austin-Travis': 'https://buy.stripe.com/8x25kF9TygST8663aL63K0o'
+        'Bexar': 'https://buy.stripe.com/test_aFa9AV1n2fOPbiicLl63K00',
+        'Davidson': 'https://buy.stripe.com/test_aFa9AV1n2fOPbiicLl63K00',
+        'Hamilton': 'https://buy.stripe.com/test_aFa9AV1n2fOPbiicLl63K00',
+        'Austin-Travis': 'https://buy.stripe.com/test_aFa9AV1n2fOPbiicLl63K00'
     }
     
     if plan in payment_links:
