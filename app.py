@@ -38,7 +38,7 @@ def number_format(value):
     except (ValueError, TypeError):
         return value
 
-firebase = None  # FirebaseBackend()  # Disabled to prevent crashes
+firebase = FirebaseBackend()  # Enabled for Firebase Auth
 stripe_payment = StripePayment()
 email_service = EmailService()
 
@@ -48,7 +48,13 @@ email_service = EmailService()
 @app.route('/')
 def index():
     user = session.get('user')
-    return render_template('index.html', user=user, stripe_publishable_key=config.STRIPE_PUBLISHABLE_KEY)
+    return render_template('index.html', 
+                          user=user, 
+                          stripe_publishable_key=config.STRIPE_PUBLISHABLE_KEY,
+                          stripe_link_nashville=config.STRIPE_LINK_NASHVILLE,
+                          stripe_link_chattanooga=config.STRIPE_LINK_CHATTANOOGA,
+                          stripe_link_austin=config.STRIPE_LINK_AUSTIN,
+                          stripe_link_sanantonio=config.STRIPE_LINK_SANANTONIO)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -62,6 +68,7 @@ def signup():
             if user and 'error' not in user:
                 session['user_id'] = user['uid']
                 session['email'] = user['email']
+                print(f"New signup: {email}")  # Admin alert
                 return redirect(url_for('index'))
             else:
                 error_msg = user.get('error', 'Failed to create account') if user else 'Failed to create account'
@@ -82,10 +89,19 @@ def login():
         email = request.form.get('email')
         password = request.form.get('password')
         
-        # For testing, accept any login
-        session['user_id'] = 'test_user_' + email.replace('@', '_')
-        session['email'] = email
-        return redirect(url_for('index'))
+        if firebase:
+            user = firebase.authenticate_user(email, password)
+            if user:
+                session['user_id'] = user['uid']
+                session['email'] = user['email']
+                return redirect(url_for('admin') if 'admin' in request.args else url_for('index'))
+            else:
+                return render_template('login.html', error='Invalid credentials')
+        else:
+            # Mock login
+            session['user_id'] = 'test_user_' + email.replace('@', '_')
+            session['email'] = email
+            return redirect(url_for('admin') if 'admin' in request.args else url_for('index'))
     
     return render_template('login.html')
 
@@ -108,28 +124,42 @@ def subscribe():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    """Main dashboard - shows daily leads"""
+    """User dashboard - shows all subscribed leads"""
     user_id = session.get('user_id')
     user = firebase.get_user(user_id) if firebase else {'email': session.get('email', 'demo@example.com')}
     
-    # Get today's leads
-    date_str = datetime.now().strftime('%Y-%m-%d')
-    leads = firebase.get_daily_leads(date_str) if firebase else [
-        {
-            "county": "Nashville-Davidson",
-            "permit_number": "DEMO-001",
-            "address": "123 Main St, Nashville, TN",
-            "permit_type": "Residential Addition",
-            "estimated_value": 50000,
-            "work_description": "Kitchen remodel and addition",
-            "date": date_str
-        }
-    ]
+    # Get user's subscriptions
+    subscriptions = firebase.get_user_subscriptions(user_id) if firebase and hasattr(firebase, 'get_user_subscriptions') else [{'county': 'Nashville-Davidson'}, {'county': 'Bexar'}]
+    user_counties = [sub.get('county', '').lower().replace(' ', '_') for sub in subscriptions]
     
-    return render_template('dashboard.html', 
-                          user=user,
-                          leads=leads,
-                          date=date_str)
+    # Pull all user permits
+    master = []
+    data_dir = Path('scraped_permits')
+    if data_dir.exists():
+        for csv_file in data_dir.glob('*.csv'):
+            city_name = csv_file.name.split('_')[0]
+            city_map = {
+                'sanantonio': 'bexar',
+                'nashville': 'davidson',
+                'austin': 'travis',
+                'hamilton': 'hamilton'
+            }
+            city_slug = city_map.get(city_name, city_name)
+            try:
+                with open(csv_file, 'r', encoding='utf-8') as f:
+                    reader = csv.DictReader(f)
+                    for row in reader:
+                        row['city'] = city_slug
+                        if 'pull_time' not in row:
+                            row['pull_time'] = datetime.fromtimestamp(csv_file.stat().st_mtime).strftime('%Y-%m-%d %H:%M:%S')
+                        master.append(row)
+            except Exception as e:
+                print(f"Error reading {csv_file}: {e}")
+    
+    # Filter by subscribed counties
+    user_permits = [p for p in master if p.get('city', '').lower() in user_counties]
+    
+    return render_template('dashboard.html', user=user, user_permits=user_permits)
 
 
 @app.route('/archives')
@@ -574,7 +604,19 @@ def admin():
     # Calculate total value
     total_value = sum(int(p.get('estimated_value', 0) or 0) for p in master)
     
-    return render_template('admin.html', master=master, cities=cities, user=user, total_value=total_value)
+@app.route('/admin/test-deploy', methods=['POST'])
+@login_required
+def test_deploy():
+    """Force push to Railway"""
+    import subprocess
+    try:
+        result = subprocess.run(['git', 'push', 'origin', 'force-one', '--force'], capture_output=True, text=True)
+        if result.returncode == 0:
+            return jsonify({'message': 'Deploy pushed successfully'})
+        else:
+            return jsonify({'message': 'Deploy failed: ' + result.stderr}), 500
+    except Exception as e:
+        return jsonify({'message': 'Error: ' + str(e)}), 500
 @app.route('/success')
 def success():
     """Handle successful payment"""
@@ -640,9 +682,9 @@ def api_permits_date(year, month, day):
     return jsonify(leads)
 
 if __name__ == '__main__':
-    print(f"🚀 Starting Contractor Leads on http://localhost:8003")
+    print(f"🚀 Starting Contractor Leads on http://localhost:8086")
     try:
-        app.run(host='127.0.0.1', port=8003, debug=False, threaded=False, use_reloader=False)
+        app.run(host='127.0.0.1', port=8086, debug=False, threaded=False, use_reloader=False)
     except Exception as e:
         print(f"❌ Error starting app: {e}")
         import traceback
