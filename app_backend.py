@@ -119,7 +119,7 @@ def index():
 
 
 
-            .counties { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+            .counties { display: grid; grid-template-columns: 1fr; gap: 20px; }
             .county-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 30px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; display: block; text-align: center; }
             .county-card:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(70, 130, 180, 0.3); transform: translateY(-4px); box-shadow: 0 10px 40px rgba(70, 130, 180, 0.2); }
             .county-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
