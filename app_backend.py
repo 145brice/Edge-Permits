@@ -584,6 +584,134 @@ def dashboard():
     
     return render_template('dashboard.html', permits=permits, counties=[f"{sub['state_key']}_{sub['county_key']}" for sub in subscriptions])
 
+@app.route('/admin')
+def admin():
+    """Simple web admin panel"""
+    stats = database.get_subscription_stats()
+    users = database.get_all_users()
+    
+    # Get subscription breakdown
+    with database.get_db() as conn:
+        cursor = conn.execute("""
+            SELECT state_key, county_key, COUNT(*) as count, status
+            FROM subscriptions
+            GROUP BY state_key, county_key, status
+            ORDER BY state_key, county_key
+        """)
+        subscriptions_breakdown = cursor.fetchall()
+    
+    return render_template_string("""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Admin Panel</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; padding: 40px 20px; }
+            .container { max-width: 1200px; margin: 0 auto; }
+            h1 { text-align: center; margin-bottom: 40px; font-size: 2.5rem; font-weight: 800; }
+            .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px; }
+            .stat-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 25px; text-align: center; }
+            .stat-value { font-size: 2.5rem; font-weight: 800; color: #6366f1; margin-bottom: 5px; }
+            .stat-label { color: #a0a0a0; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.5px; }
+            .section { margin-bottom: 40px; }
+            .section h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; color: #fff; }
+            table { width: 100%; border-collapse: collapse; background: rgba(255,255,255,0.02); border-radius: 12px; overflow: hidden; }
+            th, td { padding: 15px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); }
+            th { background: rgba(255,255,255,0.05); font-weight: 600; color: #d0d0d0; }
+            tr:hover { background: rgba(255,255,255,0.01); }
+            .status-active { color: #22c55e; }
+            .status-cancelled { color: #ef4444; }
+            .back { text-align: center; margin-top: 40px; }
+            .back a { color: #6366f1; text-decoration: none; font-weight: 600; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Admin Panel</h1>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">{{ stats.total_subscriptions }}</div>
+                    <div class="stat-label">Total Subscriptions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">{{ stats.active_subscriptions }}</div>
+                    <div class="stat-label">Active Subscriptions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">{{ stats.cancelled_subscriptions }}</div>
+                    <div class="stat-label">Cancelled Subscriptions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${{ "%.2f"|format(stats.active_subscriptions * 49.99) }}</div>
+                    <div class="stat-label">Monthly Recurring Revenue</div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Users</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Name</th>
+                            <th>Created</th>
+                            <th>Last Login</th>
+                            <th>Active</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.full_name or 'N/A' }}</td>
+                            <td>{{ user.created_at }}</td>
+                            <td>{{ user.last_login or 'Never' }}</td>
+                            <td>{% if user.is_active %}Yes{% else %}No{% endif %}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="section">
+                <h2>Subscriptions by County</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>State</th>
+                            <th>County</th>
+                            <th>Count</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for sub in subscriptions_breakdown %}
+                        <tr>
+                            <td>{{ sub.state_key.title() }}</td>
+                            <td>{{ sub.county_key.title() }}</td>
+                            <td>{{ sub.count }}</td>
+                            <td class="status-{{ sub.status }}">{{ sub.status }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="back">
+                <a href="/">← Back to Home</a>
+            </div>
+        </div>
+    </body>
+    </html>
+    """, stats=stats, users=users, subscriptions_breakdown=subscriptions_breakdown)
+
 if __name__ == '__main__':
     total_leads = sum(len(county_leads) for state_leads in LEADS.values() for county_leads in state_leads.values())
     print(f"\n🚀 Contractor Leads Backend")
