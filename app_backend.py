@@ -101,16 +101,16 @@ def index():
             .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
             .hero-content { text-align: center; max-width: 900px; margin: 0 auto; }
             .user-badge { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); font-size: 0.875rem; }
-            .user-badge a { color: #6366f1; text-decoration: none; margin-left: 15px; }
-            .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3); padding: 8px 20px; border-radius: 50px; font-size: 0.875rem; font-weight: 500; color: #818cf8; margin-bottom: 30px; letter-spacing: 0.3px; }
+            .user-badge a { color: #4682b4; text-decoration: none; margin-left: 15px; }
+            .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(70, 130, 180, 0.1); border: 1px solid rgba(70, 130, 180, 0.3); padding: 8px 20px; border-radius: 50px; font-size: 0.875rem; font-weight: 500; color: #5a67d8; margin-bottom: 30px; letter-spacing: 0.3px; }
             .badge-dot { width: 6px; height: 6px; background: #22c55e; border-radius: 50%; animation: pulse 2s infinite; }
             @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
             h1 { font-size: 5.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 25px; background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.03em; }
             .subtitle { font-size: 1.5rem; color: #a0a0a0; margin-bottom: 50px; font-weight: 400; line-height: 1.5; }
             .cta-group { display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 60px; }
             .btn { padding: 18px 40px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 1.125rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: inline-flex; align-items: center; gap: 10px; border: none; cursor: pointer; }
-            .btn-primary { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); color: white; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4); }
-            .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5); }
+            .btn-primary { background: linear-gradient(135deg, #4682b4 0%, #5a67d8 100%); color: white; box-shadow: 0 4px 20px rgba(70, 130, 180, 0.4); }
+            .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(70, 130, 180, 0.5); }
             .btn-secondary { background: rgba(255, 255, 255, 0.05); color: white; border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
             .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); }
             .markets { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; padding: 50px 40px; backdrop-filter: blur(10px); }
@@ -122,7 +122,7 @@ def index():
             .state-name { font-size: 1.5rem; font-weight: 700; color: #ffffff; }
             .counties { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
             .county-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 30px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; display: block; }
-            .county-card:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(99, 102, 241, 0.3); transform: translateY(-4px); box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2); }
+            .county-card:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(70, 130, 180, 0.3); transform: translateY(-4px); box-shadow: 0 10px 40px rgba(70, 130, 180, 0.2); }
             .county-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
             .county-icon { font-size: 2rem; }
             .county-info { flex: 1; }
@@ -132,7 +132,7 @@ def index():
             .stat { display: flex; flex-direction: column; }
             .stat-label { font-size: 0.75rem; color: #808080; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
             .stat-value { font-size: 1.5rem; font-weight: 700; color: #333; }
-            .arrow { color: #6366f1; font-size: 1.25rem; }
+            .arrow { color: #4682b4; font-size: 1.25rem; }
             @media (max-width: 768px) { h1 { font-size: 2.5rem; } .subtitle { font-size: 1.125rem; } .counties { grid-template-columns: 1fr; } }
         </style>
     </head>
