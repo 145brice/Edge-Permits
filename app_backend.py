@@ -131,7 +131,7 @@ def index():
             .county-stats { display: flex; justify-content: space-between; align-items: center; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
             .stat { display: flex; flex-direction: column; }
             .stat-label { font-size: 0.75rem; color: #808080; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-            .stat-value { font-size: 1.5rem; font-weight: 700; color: #6366f1; }
+            .stat-value { font-size: 1.5rem; font-weight: 700; color: #333; }
             .arrow { color: #6366f1; font-size: 1.25rem; }
             @media (max-width: 768px) { h1 { font-size: 2.5rem; } .subtitle { font-size: 1.125rem; } .counties { grid-template-columns: 1fr; } }
         </style>
