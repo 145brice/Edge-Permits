@@ -221,7 +221,7 @@ def index():
         </div>
     </body>
     </html>
-    """, user_email=user_email)
+    """, user_email=user_email, STRIPE_URLS=STRIPE_URLS)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
