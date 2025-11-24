@@ -127,10 +127,8 @@ def index():
             .county-info { margin-bottom: 15px; }
             .county-city { font-size: 1.25rem; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
             .county-name { font-size: 0.875rem; color: #808080; font-weight: 500; }
-            .county-stats { display: flex; justify-content: center; }
-            .stat { text-align: center; }
-            .stat-label { font-size: 0.75rem; color: #808080; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-            .stat-value { font-size: 1.5rem; font-weight: 700; color: #333; }
+            .state-section { margin-bottom: 30px; }
+            .state-header { font-size: 1.25rem; font-weight: 600; color: #6366f1; margin-bottom: 15px; text-align: left; margin-left: 20px; }
 
             @media (max-width: 768px) { h1 { font-size: 2.5rem; } .subtitle { font-size: 1.125rem; } .counties { grid-template-columns: 1fr; } }
         </style>
@@ -166,55 +164,63 @@ def index():
                 </div>
                 <div class="markets">
                     <div class="markets-title">Available Markets</div>
-                    <div class="counties">
-                        <a href="{{ STRIPE_URLS['tennessee']['nashville'] }}" class="county-card">
-                            <div class="county-info">
-                                <div class="county-city">Nashville</div>
-                                <div class="county-name">Davidson County, TN</div>
-                            </div>
-                            <div class="county-stats">
-                                <div class="stat">
-                                    <div class="stat-label">Active Leads</div>
-                                    <div class="stat-value">272</div>
+                    <div class="state-section">
+                        <h2 class="state-header">Tennessee</h2>
+                        <div class="counties">
+                            <a href="{{ STRIPE_URLS['tennessee']['nashville'] }}" class="county-card">
+                                <div class="county-info">
+                                    <div class="county-city">Nashville</div>
+                                    <div class="county-name">Davidson County, TN</div>
                                 </div>
-                            </div>
-                        </a>
-                        <a href="{{ STRIPE_URLS['tennessee']['chattanooga'] }}" class="county-card">
-                            <div class="county-info">
-                                <div class="county-city">Chattanooga</div>
-                                <div class="county-name">Hamilton County, TN</div>
-                            </div>
-                            <div class="county-stats">
-                                <div class="stat">
-                                    <div class="stat-label">Active Leads</div>
-                                    <div class="stat-value">943</div>
+                                <div class="county-stats">
+                                    <div class="stat">
+                                        <div class="stat-label">Active Leads</div>
+                                        <div class="stat-value">272</div>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                        <a href="{{ STRIPE_URLS['texas']['travis'] }}" class="county-card">
-                            <div class="county-info">
-                                <div class="county-city">Austin</div>
-                                <div class="county-name">Travis County, TX</div>
-                            </div>
-                            <div class="county-stats">
-                                <div class="stat">
-                                    <div class="stat-label">Active Leads</div>
-                                    <div class="stat-value">5,000</div>
+                            </a>
+                            <a href="{{ STRIPE_URLS['tennessee']['chattanooga'] }}" class="county-card">
+                                <div class="county-info">
+                                    <div class="county-city">Chattanooga</div>
+                                    <div class="county-name">Hamilton County, TN</div>
                                 </div>
-                            </div>
-                        </a>
-                        <a href="{{ STRIPE_URLS['texas']['bexar'] }}" class="county-card">
-                            <div class="county-info">
-                                <div class="county-city">San Antonio</div>
-                                <div class="county-name">Bexar County, TX</div>
-                            </div>
-                            <div class="county-stats">
-                                <div class="stat">
-                                    <div class="stat-label">Active Leads</div>
-                                    <div class="stat-value">4,695</div>
+                                <div class="county-stats">
+                                    <div class="stat">
+                                        <div class="stat-label">Active Leads</div>
+                                        <div class="stat-value">943</div>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="state-section">
+                        <h2 class="state-header">Texas</h2>
+                        <div class="counties">
+                            <a href="{{ STRIPE_URLS['texas']['travis'] }}" class="county-card">
+                                <div class="county-info">
+                                    <div class="county-city">Austin</div>
+                                    <div class="county-name">Travis County, TX</div>
+                                </div>
+                                <div class="county-stats">
+                                    <div class="stat">
+                                        <div class="stat-label">Active Leads</div>
+                                        <div class="stat-value">5,000</div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="{{ STRIPE_URLS['texas']['bexar'] }}" class="county-card">
+                                <div class="county-info">
+                                    <div class="county-city">San Antonio</div>
+                                    <div class="county-name">Bexar County, TX</div>
+                                </div>
+                                <div class="county-stats">
+                                    <div class="stat">
+                                        <div class="stat-label">Active Leads</div>
+                                        <div class="stat-value">4,695</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
