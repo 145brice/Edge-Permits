@@ -14,7 +14,7 @@ import auth
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production-' + os.urandom(24).hex())
 
-# Stripe configuration
+# Force redeploy - remove purple gradient fix
 STRIPE_WEBHOOK_SECRET = os.environ.get('STRIPE_WEBHOOK_SECRET', 'whsec_test_secret')
 
 # Stripe payment URLs for each county
