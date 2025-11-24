@@ -251,10 +251,10 @@ def signup():
     
     # GET request - show signup form
     counties_data = [
-        {'state': 'Tennessee', 'city': 'Nashville', 'county': 'Davidson County', 'emoji': '🎵', 'state_key': 'tennessee', 'county_key': 'nashville', 'count': 272},
-        {'state': 'Tennessee', 'city': 'Chattanooga', 'county': 'Hamilton County', 'emoji': '🏔️', 'state_key': 'tennessee', 'county_key': 'chattanooga', 'count': 943},
-        {'state': 'Texas', 'city': 'Austin', 'county': 'Travis County', 'emoji': '🎸', 'state_key': 'texas', 'county_key': 'travis', 'count': 5000},
-        {'state': 'Texas', 'city': 'San Antonio', 'county': 'Bexar County', 'emoji': '🌮', 'state_key': 'texas', 'county_key': 'bexar', 'count': 4695},
+        {'state': 'Tennessee', 'city': 'Nashville', 'county': 'Davidson County', 'state_key': 'tennessee', 'county_key': 'nashville', 'count': 272},
+        {'state': 'Tennessee', 'city': 'Chattanooga', 'county': 'Hamilton County', 'state_key': 'tennessee', 'county_key': 'chattanooga', 'count': 943},
+        {'state': 'Texas', 'city': 'Austin', 'county': 'Travis County', 'state_key': 'texas', 'county_key': 'travis', 'count': 5000},
+        {'state': 'Texas', 'city': 'San Antonio', 'county': 'Bexar County', 'state_key': 'texas', 'county_key': 'bexar', 'count': 4695},
     ]
     
     cards_html = ""
@@ -262,7 +262,6 @@ def signup():
         stripe_url = STRIPE_URLS.get(c['state_key'], {}).get(c['county_key'], '#')
         cards_html += f"""
         <div class="plan-card">
-            <div class="plan-icon">{c['emoji']}</div>
             <h3 class="plan-city">{c['city']}</h3>
             <p class="plan-county">{c['county']}, {c['state']}</p>
             <div class="plan-price">$49.99<span>/mo</span></div>
@@ -289,7 +288,6 @@ def signup():
         .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-bottom: 40px; }}
         .plan-card {{ background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 35px; text-align: center; transition: all 0.3s; }}
         .plan-card:hover {{ border-color: rgba(99,102,241,0.3); background: rgba(255,255,255,0.03); transform: translateY(-5px); }}
-        .plan-icon {{ font-size: 3rem; margin-bottom: 20px; }}
         .plan-city {{ font-size: 1.5rem; font-weight: 700; margin-bottom: 5px; }}
         .plan-county {{ color: #808080; font-size: 0.875rem; margin-bottom: 20px; }}
         .plan-price {{ font-size: 2.5rem; font-weight: 800; color: #6366f1; margin-bottom: 10px; }}
