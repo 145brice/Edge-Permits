@@ -289,7 +289,7 @@ def signup():
         .plan-price {{ font-size: 2.5rem; font-weight: 800; color: #6366f1; margin-bottom: 10px; }}
         .plan-price span {{ font-size: 1.25rem; color: #808080; }}
         .plan-leads {{ color: #a0a0a0; font-size: 0.875rem; margin-bottom: 25px; }}
-        .btn-subscribe {{ display: block; width: 100%; padding: 15px; background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); color: white; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 1rem; transition: all 0.3s; margin-bottom: 20px; }}
+        .btn-subscribe {{ display: block; width: 100%; padding: 15px; background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%); color: white; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 1rem; transition: all 0.3s; margin-bottom: 20px; }}
         .btn-subscribe:hover {{ transform: translateY(-2px); box-shadow: 0 8px 30px rgba(99,102,241,0.4); }}
         .plan-features {{ list-style: none; text-align: left; }}
         .plan-features li {{ padding: 10px 0; color: #a0a0a0; font-size: 0.875rem; border-bottom: 1px solid rgba(255,255,255,0.05); }}
@@ -408,7 +408,7 @@ def login():
         h2 { text-align: center; color: #fff; margin-bottom: 30px; font-size: 2rem; }
         input { width: 100%; padding: 15px; margin: 10px 0; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: #fff; font-size: 1rem; }
         input:focus { outline: none; border-color: #6366f1; }
-        button { width: 100%; padding: 15px; background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 1rem; margin-top: 10px; }
+        button { width: 100%; padding: 15px; background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%); color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 1rem; margin-top: 10px; }
         button:hover { opacity: 0.9; }
         a { display: block; text-align: center; margin-top: 20px; color: #6366f1; text-decoration: none; font-weight: 600; }
         .signup-link { margin-top: 20px; text-align: center; color: #a0a0a0; }
@@ -516,7 +516,7 @@ def county_detail(state, county):
         .banner-text {{ flex: 1; min-width: 250px; }}
         .banner-text h3 {{ font-size: 1.5rem; margin-bottom: 5px; }}
         .banner-text p {{ color: #a0a0a0; }}
-        .btn-unlock {{ padding: 15px 30px; background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); color: white; text-decoration: none; border-radius: 12px; font-weight: 700; white-space: nowrap; }}
+        .btn-unlock {{ padding: 15px 30px; background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%); color: white; text-decoration: none; border-radius: 12px; font-weight: 700; white-space: nowrap; }}
         .btn-unlock:hover {{ opacity: 0.9; }}
         .leads-grid {{ display: grid; gap: 15px; }}
         .lead-card {{ background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 20px; transition: all 0.2s; }}
